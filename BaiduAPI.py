@@ -62,6 +62,8 @@ def compare(file1, file2, name1, name2):
             dict[name1 + "&" + name2] = 'NONE'
             print(name1 + "&" + name2)
         # print(content['error_msg'])
+    else:
+        print("error")
 
 def export_excel(dict):
     workbook = xlsxwriter.Workbook('./result_data.xlsx')
@@ -95,9 +97,11 @@ file_list = []
 name_list = []
 dict = {}
 list_jpg("/Users/liuhuanchao/Documents/faces2/faces", file_list, name_list)
+print(len(file_list))
+print(len(name_list))
 for i in range(0, len(file_list)):
     # for j, val2 in enumerate(file_list, i):
-    for j in range(i, len(file_list)):
+    for j in range(0, len(file_list)):
         compare(file_list[i], file_list[j], name_list[i], name_list[j])
         time.sleep(0.5)
 for key, value in dict.items():
